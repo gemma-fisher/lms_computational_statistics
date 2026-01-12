@@ -13,3 +13,17 @@ ICL email address `jurtasun@ic.ac.uk`
 - Variables, parameters and estimators.
 - The Law of Large Numbers (LLN).
 - The Central Limit Theorem (CLT).
+
+The law of large numbers
+```latex
+\begin{equation}
+	\bar{x} = \frac{1}{n} \sum_{i = 1}^{n} x_{i} \; .
+\end{equation}
+```
+
+The central limit theorem
+```latex
+\begin{equation}
+	s^2 = \frac{1}{n - 1} \sum_{i = 1}^{N} (x_{i} - \bar{x})^{2} \; ,
+\end{equation}
+```
