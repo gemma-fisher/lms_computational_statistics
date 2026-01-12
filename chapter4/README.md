@@ -17,20 +17,20 @@ ICL email address `jurtasun@ic.ac.uk`
 
 t-statistic one sample
 $$
-    t = \dfrac{\bar{x} - \mu}{s/\sqrt{n}} \; .
+t = \dfrac{\bar{x} - \mu}{s/\sqrt{n}} \; .
 $$
 
 t-statistic two sample
 $$
-    t = \dfrac{\bar{x}_1 - \bar{x}_2}{\sqrt{\dfrac{s_1^2}{n_1} + \dfrac{s_2^2}{n_2 }}} \; .
+t = \dfrac{\bar{x}_1 - \bar{x}_2}{\sqrt{\dfrac{s_1^2}{n_1} + \dfrac{s_2^2}{n_2 }}} \; .
 $$
 
 Fisher statistic
 $$
-    F = \dfrac{s_1^2}{s_2^2} \; .
+F = \dfrac{s_1^2}{s_2^2} \; .
 $$
 
 &chi;<sup>2</sup>-statistic
 $$
-    \chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}
+\chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}
 $$
