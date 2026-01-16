@@ -58,17 +58,22 @@ The course is organized in four chapters, covering the topics listed below.
 
 ## Setting up your `codespace`
 
-Navigate to the green `code` tab, then press the `codespaces` tab and `create a codespace on main`:
+Log in with user account, then navigate to the green `code` tab, and press the `codespaces`:
 
 <img src="/readme_figures/codespaces1.png" width="800">
 
-Press the `codespaces` tab in the upper-right corner:
+Once pressed, you shall find the `local` tab. Move to the `codespaces` tab in the upper-right corner:
 
-<img src="/readme_figures/codespaces2.png" width="500">
+<div style="text-align:center">
+  <img src="/readme_figures/codespaces2.png" width="400">
+</div>
 
-Once logged-in, press the `codespaces` tab and `create a codespace on main`
+Once logged-in, inside the `codespaces` tab you shall find the `create a codespace on main` option:
 
-<img src="/readme_figures/codespaces3.png" width="500">
+<div style="text-align:center">
+  <img src="/readme_figures/codespaces3.png" width="400">
+</div>
+
 
 ## Remote acces to `JEX`
 
@@ -82,6 +87,13 @@ ssh user@jex.lms.mrc.ac.uk
 Open a terminal and type
 ```
 ssh user@login.hpc.ic.ac.uk
+```
+
+## Remote acces to `Krypton`
+
+Open a terminal and type
+```
+ssh user@krypton
 ```
 
 ## Setting up `Python` and `R` on your own machine
