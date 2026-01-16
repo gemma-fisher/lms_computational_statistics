@@ -33,7 +33,7 @@ The course is organized in four chapters, covering the topics listed below.
 
 - Introduction to probability and random events.
 - Discrete events: Bernoulli, Binomial, Poisson, and discrete Uniform distributions.
-- Continuous events: Gaussian, Exponential, and continous Uniform distributions.
+- Continuous events: Gaussian, Exponential, and continuous Uniform distributions.
 - Mean and variance as expected values.
 
 ### Chapter 3. Hypothesis testing (I): Parameter estimation.
@@ -46,7 +46,7 @@ The course is organized in four chapters, covering the topics listed below.
 ### Chapter 4. Hypothesis testing (II): Some examples.
 
 - The modern Pearson-Neyman approach to hypothesis testing.
-- Common examples of statistical tests (t-test, Fisher exact, ANOVA, &chi;<sup>2</sup>).
+- Common examples of statistical tests (t-test, Fisher's exact, ANOVA, &chi;<sup>2</sup>).
 - Parametric vs non-parametric tests.
 - Revisiting P-values: errors, power, and Bayesian probability.
 
@@ -54,11 +54,11 @@ The course is organized in four chapters, covering the topics listed below.
 
 - Error types in hypothesis testing. The Fisher and the Pearson-Neyman approach.
 - Independent and conditional events.
-- Conditional probability: The Bayes rule.
+- Conditional probability: The Bayes' rule.
 
 ## Setting up your `codespace`
 
-Log in with user account, then navigate to the green `code` tab:
+Log-in with user account, then navigate to the green `code` tab:
 
 <img src="/readme_figures/codespaces1.png" width="800">
 
@@ -74,26 +74,30 @@ Once logged-in, inside the `codespaces` tab, you shall find the `create a codesp
   <img src="/readme_figures/codespaces3.png" width="800">
 </div>
 
-## Remote acces to `JEX`
+## Remote access to `JEX`
 
 To access `JEX`, the LMS HPC cluster, open a terminal and type
 ```
 ssh user@jex.lms.mrc.ac.uk
 ```
+where `user` should be your username as set up with corresponding IT service. You will be asked to input your passsword to access.
 
-## Remote acces to `Krypton`
+## Remote access to `Krypton`
 
 To access `Krypton`, the former LMS HPC cluster, open a terminal and type
 ```
 ssh user@krypton
 ```
+where `user` should be your username as set up with corresponding IT service. You will be asked to input your passsword to access.
 
-## Remote acces to `CX2`
 
-To access `CX2`, the Imperial college HPC cluster, open a terminal and type
+## Remote access to `CX2`
+
+To access `CX2`, the Imperial College HPC cluster, open a terminal and type
 ```
 ssh user@login.hpc.ic.ac.uk
 ```
+where `user` should be your username as set up with corresponding IT service. You will be asked to input your passsword to access.
 
 ## Setting up `Python` and `R` on your own machine
 Setting up `Python` and `R` on your own machine
