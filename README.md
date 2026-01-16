@@ -80,7 +80,9 @@ To access `JEX`, the LMS HPC cluster, open a terminal and type
 ```
 ssh user@jex.lms.mrc.ac.uk
 ```
-where `user` should be your username as set up with corresponding IT service. You will be asked to input your passsword to access.
+where `user` should be your username as set up with corresponding IT service. 
+
+You will be asked to input your passsword to access, also set up with IT.
 
 ## Remote access to `Krypton`
 
@@ -88,7 +90,9 @@ To access `Krypton`, the former LMS HPC cluster, open a terminal and type
 ```
 ssh user@krypton
 ```
-where `user` should be your username as set up with corresponding IT service. You will be asked to input your passsword to access.
+where `user` should be your username as set up with corresponding IT service. 
+
+You will be asked to input your passsword to access, also set up with IT.
 
 
 ## Remote access to `CX2`
@@ -97,7 +101,9 @@ To access `CX2`, the Imperial College HPC cluster, open a terminal and type
 ```
 ssh user@login.hpc.ic.ac.uk
 ```
-where `user` should be your username as set up with corresponding IT service. You will be asked to input your passsword to access.
+where `user` should be your username as set up with corresponding IT service. 
+
+You will be asked to input your passsword to access, also set up with IT.
 
 ## Setting up `Python` and `R` on your own machine
 Setting up `Python` and `R` on your own machine
