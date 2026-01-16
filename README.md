@@ -74,26 +74,25 @@ Once logged-in, inside the `codespaces` tab, you shall find the `create a codesp
   <img src="/readme_figures/codespaces3.png" width="800">
 </div>
 
-
 ## Remote acces to `JEX`
 
-Open a terminal and type
+To access `JEX`, the LMS HPC cluster, open a terminal and type
 ```
 ssh user@jex.lms.mrc.ac.uk
 ```
 
-## Remote acces to `Imperial HPC`
-
-Open a terminal and type
-```
-ssh user@login.hpc.ic.ac.uk
-```
-
 ## Remote acces to `Krypton`
 
-Open a terminal and type
+To access `Krypton`, the former LMS HPC cluster, open a terminal and type
 ```
 ssh user@krypton
+```
+
+## Remote acces to `CX2`
+
+To access `CX2`, the Imperial college HPC cluster, open a terminal and type
+```
+ssh user@login.hpc.ic.ac.uk
 ```
 
 ## Setting up `Python` and `R` on your own machine
