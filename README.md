@@ -13,7 +13,7 @@ ICL email address `jurtasun@ic.ac.uk`
 
 This course provides an introduction to computational statistics. 
 The aim of the course is to build simple and accessible yet strong mathematical foundations in probability theory, descriptive statistics, 
-and hypothesis testing while learning how to interpret and analyze data with clarity and confidence.
+and hypothesis testing, while learning how to interpret and analyze data with clarity and confidence.
 
 In each chapter, we will navigate together through practical exercises that connect theory to real-world applications, using `Python` and `R` with real datasets. 
 
@@ -25,18 +25,18 @@ The course is organized in four chapters, covering the topics listed below.
 ### Chapter 1. Prediction and inference.
 
 - General frameworks for statistics and probability.
-- The idea of descriptive statistics, population and sampling.
-- The idea of predictive probability and random events.
+- Introduction to descriptive statistics, population and sampling.
+- Statistical estimators for central tendency and variation.
 - Data visualization: histogram, box, violin, dispersion.
 
 ### Chapter 2. Foundations of probability.
 
-- Definition of probability and random events.
-- Discrete events: Bernoulli, Binomial, Poisson distributions.
-- Continuous events: Uniform, Exponential, Gaussian distributions.
+- Introduction to probability and random events.
+- Discrete events: Bernoulli, Binomial, Poisson, and discrete Uniform distributions.
+- Continuous events: Gaussian, Exponential, and continous Uniform distributions.
 - Mean and variance as expected values.
 
-### Chapter 3. Hypothesis testing I: Parameter estimation.
+### Chapter 3. Hypothesis testing (I): Parameter estimation.
 
 - Prediction vs inference revisited. Variables, parameters and estimators.
 - The Law of Large Numbers (LLN).
@@ -45,20 +45,21 @@ The course is organized in four chapters, covering the topics listed below.
 
 ### Chapter 4. Hypothesis testing (II): Some examples.
 
-- General approach to hypothesis testing.
+- The modern Pearson-Neyman approach to hypothesis testing.
 - Common examples of statistical tests (t-test, Fisher exact, ANOVA, &chi;<sup>2</sup>).
 - Parametric vs non-parametric tests.
 - Revisiting P-values: errors, power, and Bayesian probability.
 
-### Chapter 4. Bayesian probability.
+### Chapter 5. Introduction to Bayesian probability.
 
-- Error types in hypothesis testing.
+- Error types in hypothesis testing. The Fisher and the Pearson-Neyman approach.
 - Independent and conditional events.
 - Conditional probability: The Bayes rule.
 
 ## Setting up your `codespace`
 
 Navigate to the green `code` tab, then press the `codespaces` tab and `create a codespace on main`
+
 <img src="/readme_figures/codespaces1.png" width="800">
 
 ## Remote acces to `JEX`
