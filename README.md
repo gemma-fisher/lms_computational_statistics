@@ -58,9 +58,17 @@ The course is organized in four chapters, covering the topics listed below.
 
 ## Setting up your `codespace`
 
-Navigate to the green `code` tab, then press the `codespaces` tab and `create a codespace on main`
+Navigate to the green `code` tab, then press the `codespaces` tab and `create a codespace on main`:
 
 <img src="/readme_figures/codespaces1.png" width="800">
+
+Press the `codespaces` tab in the upper-right corner:
+
+<img src="/readme_figures/codespaces2.png" width="500">
+
+Once logged-in, press the `codespaces` tab and `create a codespace on main`
+
+<img src="/readme_figures/codespaces3.png" width="500">
 
 ## Remote acces to `JEX`
 
