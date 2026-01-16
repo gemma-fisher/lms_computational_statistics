@@ -19,7 +19,7 @@
 # Import libraries ............................................................
 
 library(ggplot2)
-setwd("/Users/jurtasun/Desktop/courses/LMS/2026/lms_computational_statistics/chapter1/exercises")
+setwd("/Users/jurtasun/Desktop/courses/LMS/2026/lms_computational_statistics/chapter1/solutions")
 
 
 
@@ -38,8 +38,9 @@ cat("Data shape:", length(data), "\n")
 
 df <- data.frame(value = data)
 
-# Plot histogram
-ggplot(df, aes(x = value)) + geom_histogram(bins = 30, fill = "steelblue", color = "black", alpha = 0.6) +
+# Plot data as histogram
+ggplot(df, aes(x = value)) + 
+geom_histogram(bins = 30, fill = "steelblue", color = "black", alpha = 0.6) +
   labs(title = "Histogram of simulated data", x = "Value", y = "Frequency") + theme_bw()
 
 # Plot data as box plot
@@ -54,12 +55,14 @@ ggplot(df, aes(x = "", y = value)) + geom_violin(fill = "steelblue") +
 
 # Compute mean value ..........................................................
 
+# Manual calculation
 compute_mean <- function(data) {
     
     sum(data) / length(data)
   
 }
 
+# Check implementation
 mean_manual <- compute_mean(data)
 mean_r <- mean(data)
 cat("\nMean (manual):", mean_manual, "\n")
@@ -69,6 +72,7 @@ cat("Mean (R):", mean_r, "\n")
 
 # Compute variance ............................................................
 
+# Manual calculation
 compute_var <- function(data) {
 
     mean_val <- compute_mean(data)
@@ -78,6 +82,7 @@ compute_var <- function(data) {
     
 }
 
+# Check implementation
 var_manual <- compute_var(data)
 var_r <- var(data) * (length(data) - 1) / length(data)
 cat("\nVariance (manual):", var_manual, "\n")
@@ -87,6 +92,7 @@ cat("Variance (R):", var_r, "\n")
 
 # Compute median ..............................................................
 
+# Manual calculation
 compute_median <- function(data) {
 
     sorted_data <- sort(data)
@@ -101,6 +107,7 @@ compute_median <- function(data) {
     
 }
 
+# Check implementation
 median_manual <- compute_median(data)
 median_r <- median(data)
 cat("\nMedian (manual):", median_manual, "\n")
@@ -110,12 +117,14 @@ cat("Median (R):", median_r, "\n")
 
 # Compute std .................................................................
 
+# Manual calculation
 compute_std <- function(data) {
 
     compute_var(data) ^ 0.5
   
 }
 
+# Check implementation
 std_manual <- compute_std(data)
 std_r <- sd(data) * sqrt((length(data) - 1) / length(data))
 cat("\nStandard deviation (manual):", std_manual, "\n")

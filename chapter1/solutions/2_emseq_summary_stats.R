@@ -30,7 +30,7 @@
 # Import libraries ............................................................
 
 library(ggplot2)
-setwd("/Users/jurtasun/Desktop/courses/LMS/2026/lms_computational_statistics/chapter1/exercises")
+setwd("/Users/jurtasun/Desktop/courses/LMS/2026/lms_computational_statistics/chapter1/solutions")
 
 
 
@@ -48,13 +48,13 @@ score <- function(numCs, numTs) {
 }
 
 # Average scores for 3uM deprived
-s_3uM_rep1 <- score(emseq$`3uM_rep1_numCs`, emseq$`3uM_rep1_numTs`)
-s_3uM_rep2 <- score(emseq$`3uM_rep2_numCs`, emseq$`3uM_rep2_numTs`)
+s_3uM_rep1 <- score(emseq$X3uM_rep1_numCs, emseq$X3uM_rep1_numTs)
+s_3uM_rep2 <- score(emseq$X3uM_rep2_numCs, emseq$X3uM_rep2_numTs)
 score_3uM <- (s_3uM_rep1 + s_3uM_rep2) / 2
 
 # Average scores for 200uM control
-s_200uM_rep1 <- score(emseq$`200uM_rep1_numCs`, emseq$`200uM_rep1_numTs`)
-s_200uM_rep2 <- score(emseq$`200uM_rep2_numCs`, emseq$`200uM_rep2_numTs`)
+s_200uM_rep1 <- score(emseq$X200uM_rep1_numCs, emseq$X200uM_rep1_numTs)
+s_200uM_rep2 <- score(emseq$X200uM_rep2_numCs, emseq$X200uM_rep2_numTs)
 score_200uM <- (s_200uM_rep1 + s_200uM_rep2) / 2
 
 
@@ -65,6 +65,7 @@ score_200uM <- (s_200uM_rep1 + s_200uM_rep2) / 2
 compute_mean <- function(data) {
   
   sum(data) / length(data)
+
 }
 
 # Check implementation
@@ -85,6 +86,7 @@ compute_var <- function(data) {
   squared_diffs <- (data - mean_val) ^ 2
   
   sum(squared_diffs) / length(data)
+
 }
 
 # Check implementation
@@ -110,6 +112,7 @@ compute_median <- function(data) {
   } else {
     sorted_data[middle + 1]
   }
+
 }
 
 # Check implementation
@@ -125,7 +128,9 @@ cat("200uM deprived (R):", median(score_200uM), "\n")
 
 # Manual calculation
 compute_std <- function(data) {
+
   compute_var(data) ^ 0.5
+  
 }
 
 # Check implementation

@@ -162,7 +162,7 @@ plt.grid(True, alpha = 0.3)
 # plt.savefig("rnaseq_violin.png", dpi = 300, bbox_inches = "tight")
 # plt.show()
 
-# Histogram
+# Prepare histogram
 
 # Extract mean per group
 m_3uM = compute_mean(samples[0])
@@ -183,4 +183,4 @@ plt.ylabel("Frequency")
 plt.legend()
 plt.grid(True, alpha = 0.3)
 # plt.savefig("rnaseq_histogram.png", dpi = 300, bbox_inches = "tight")
-plt.show()
+# plt.show()

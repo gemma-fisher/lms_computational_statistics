@@ -161,7 +161,7 @@ plt.grid(True, alpha = 0.3)
 # plt.savefig("emseq_violin.png", dpi = 300, bbox_inches = "tight")
 # plt.show()
 
-# Histogram
+# Prepare histogram
 
 # Extract mean per group
 mean_3uM = compute_mean(samples[0])

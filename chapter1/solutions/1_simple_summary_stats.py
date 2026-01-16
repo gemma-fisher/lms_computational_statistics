@@ -37,7 +37,7 @@ print(f"\nRandom data:\n{data}")
 print(f"Data format: {type(data)}")
 print(f"Data shape: {data.shape}")
 
-# Plot histogram
+# Plot data as histogram
 plt.figure(figsize = (8, 5))
 plt.hist(data, bins = 30, alpha = 0.5, edgecolor = "black", linewidth = 0.8)
 plt.title("Histogram of simulated data")

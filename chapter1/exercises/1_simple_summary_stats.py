@@ -22,11 +22,9 @@
 
 # Simulate data ...............................................................
 
-# Random seed
-
 # Simulate data
 
-# Plot histogram
+# Plot data as histogram
 
 # Plot data as box plot
 

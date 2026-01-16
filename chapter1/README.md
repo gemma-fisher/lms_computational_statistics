@@ -8,20 +8,9 @@ ICL email address `jurtasun@ic.ac.uk`
 
 <img src="/readme_figures/ukri_lms_logo.png" width = 700>
 
-### Chapter 1. Descriptive statistics.
+### Chapter 1. Prediction and inference.
 
-- The idea of population and sampling.
-- Describe central tendency and variation.
-- Data visualization: histogram, box, violin, dispresion.
-
-Sample mean
-
-$$
-\overline{x} = \frac{1}{n} \sum_{i = 1}^{n} x_{i}
-$$
-
-Sample variance
-
-$$
-s^2 = \frac{1}{n - 1} \sum_{i = 1}^{n} (x_i - \overline{x})^2
-$$
+- General frameworks for statistics and probability.
+- Introduction to descriptive statistics, population and sampling.
+- Statistical estimators for central tendency and variation.
+- Data visualization: histogram, box, violin, dispersion.

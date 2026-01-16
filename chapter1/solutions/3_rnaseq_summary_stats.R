@@ -17,12 +17,20 @@
 # Each replicate has one column only, storing raw counts. Counts represent the number reads, i.e. the number of times a transcription of that gene was detected.
 # Do not average per replicates, just concatenate / "pool" them with the '.flatten()' function.
 
+# 2. Implement manual computation of mean, median, variance and std.
+
+# 3. Compare with numpy / scipy implementation.
+
+# 4. Compute log transformed counts log(counts + 1) for clear visualization.
+
+# 5. Plot data as a box plot, violin and histogram, and plot summary statistics on top of the histogram.
+
 
 
 # Import libraries ............................................................
 
 library(ggplot2)
-setwd("/Users/jurtasun/Desktop/courses/LMS/2026/lms_computational_statistics/chapter1/exercises")
+setwd("/Users/jurtasun/Desktop/courses/LMS/2026/lms_computational_statistics/chapter1/solutions")
 
 
 
@@ -54,6 +62,7 @@ exp_200uM <- as.vector(as.matrix(rnaseq_200uM))
 compute_mean <- function(data) {
   
   sum(data) / length(data)
+
 }
 
 # Check implementation
@@ -74,6 +83,7 @@ compute_var <- function(data) {
   squared_diffs <- (data - mean_val) ^ 2
   
   sum(squared_diffs) / length(data)
+
 }
 
 # Check implementation
@@ -99,6 +109,7 @@ compute_median <- function(data) {
   } else {
     sorted_data[middle + 1]
   }
+
 }
 
 # Check implementation
@@ -116,6 +127,7 @@ cat("200uM deprived (R):", median(exp_200uM), "\n")
 compute_std <- function(data) {
   
   compute_var(data) ^ 0.5
+  
 }
 
 # Check implementation
