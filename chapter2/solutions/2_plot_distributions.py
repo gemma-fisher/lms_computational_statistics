@@ -116,5 +116,3 @@ plt.title(rf"Gaussian distribution ($\mu = {mu}, \sigma = {sigma}$)")
 plt.xlabel("x")
 plt.ylabel(r"$f\,(x; \mu, \sigma)$")
 plt.show()
-
-

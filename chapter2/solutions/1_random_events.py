@@ -142,5 +142,3 @@ probability1 = gaussian_density(x2, mu, sigma) - gaussian_density(x1, mu, sigma)
 probability2 = stats.norm.cdf(x2, mu, sigma) - stats.norm.cdf(x1, mu, sigma)
 print(f"\nProbability of finding an event between {x1} and {x2}: {probability1}")
 print(f"Probability of finding an event between {x1} and {x2}: {probability2}")
-
-
