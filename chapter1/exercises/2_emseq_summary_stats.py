@@ -6,13 +6,20 @@
 
 # Exercise 2: 
 
-# 1. Read expression data from EM-seq experiment. Compute methylation score s = nC / (nC + nT) and average per replicate
+# 1. Read expression data from EM-seq experiment. 
 
-# 2. Implement manual computation of mean, median, variance and std
+# Samples labelled '200uM' are 200 micro-molar, the control condition.
+# Samples labelled '3uM' are 3 micro-molar, the deprived condition.
+# Each have a column storing number of Cs (methylated prior to experiment), and number of Ts (unm)
+# There are two replicates per each group, labelled '_rep1' and '_rep2'
 
-# 3. Compare with numpy / scipy implementation
+# 2. Compute methylation score s = nC / (nC + nT) and average per replicate
 
-# 4. Plot data as a box plot, violin and histogram, and plot summary statistics on top of the histogram
+# 3. Implement manual computation of mean, median, variance and std
+
+# 4. Compare with numpy / scipy implementation
+
+# 5. Plot data as a box plot, violin and histogram, and plot summary statistics on top of the histogram
 
 
 
