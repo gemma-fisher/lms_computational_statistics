@@ -1,0 +1,90 @@
+# Introduction to Computational Statistics
+# Jesús Urtasun Elizari: MRC LMS 2026
+# Chapter 1: Descriptive statistics
+
+
+
+# Exercise 3: 
+
+# 1. Read expression data from RNA-seq experiment.
+
+# First column represents the gene Ensembl ID.
+
+# Samples labelled '200uM' were grown in 200 micro-molar environment, the control condition.
+# Samples labelled '3uM' were grown in 3 micro-molar environment, the deprived condition.
+# All samples are labelled 'SL_', indicating they were grown in serum. There are three replicates per each group, labelled '_rep1', '_rep2', '_rep3'.
+
+# Each replicate has one column only, storing raw counts. Counts represent the number reads, i.e. the number of times a transcription of that gene was detected.
+# Do not average per replicates, just concatenate / "pool" them with the '.flatten()' function.
+
+# 2. Implement manual computation of mean, median, variance and std.
+
+# 3. Compare with numpy / scipy implementation.
+
+# 4. Compute log transformed counts log(counts + 1) for clear visualization.
+
+# 5. Plot data as a box plot, violin and histogram, and plot summary statistics on top of the histogram.
+
+
+
+# Import libraries ............................................................
+
+
+
+# Load RNA-seq ................................................................
+
+# Read RNA-seq data
+
+# Extract deprived vs control
+
+# Remove genes with zero total counts
+
+# Concatenate replicates, convert 2D matrix to 1D vector
+
+
+
+# Compute mean value ..........................................................
+
+# Manual calculation
+
+# Check implementation
+
+
+
+# Compute variance ............................................................
+
+# Manual calculation
+
+# Check implementation
+
+
+
+# Compute median ..............................................................
+
+# Manual calculation
+
+# Check implementation
+
+
+
+# Compute std .................................................................
+
+# Manual calculation
+
+# Check implementation
+
+
+
+# Plot data and summary statistics ............................................
+
+# Prepare for plot
+
+# Log transform for proper visualization
+
+# Box plot
+
+# Violin plot
+
+# Prepare histogram
+
+# Plot histogram
