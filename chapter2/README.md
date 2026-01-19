@@ -13,4 +13,4 @@ ICL email address `jurtasun@ic.ac.uk`
 - Introduction to probability and random events.
 - Discrete events: Bernoulli, Binomial, Poisson, and discrete Uniform distributions.
 - Continuous events: Gaussian, Exponential, and continuous Uniform distributions.
-- Mean and variance as expected values.
+- Mean and variance revisited as expected values.
