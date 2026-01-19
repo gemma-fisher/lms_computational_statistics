@@ -10,7 +10,7 @@ ICL email address `jurtasun@ic.ac.uk`
 
 ### Chapter 1. Prediction and inference.
 
-- General frameworks for statistics and probability.
+- General frameworks, descriptive statistics and predictive probability.
 - Introduction to descriptive statistics, population and sampling.
 - Statistical estimators for central tendency and variation.
 - Data visualization: histogram, box, violin, dispersion.
