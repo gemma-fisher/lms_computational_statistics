@@ -10,7 +10,7 @@ ICL email address `jurtasun@ic.ac.uk`
 
 ### Chapter 3. Hypothesis testing (I): Parameter estimation.
 
-- Prediction vs inference revisited. Variables, parameters and estimators.
+- Prediction, inference and estimartors revisited.
 - The Law of Large Numbers (LLN).
 - The Central Limit Theorem (CLT).
 - Confidence intervals and critical regions.
