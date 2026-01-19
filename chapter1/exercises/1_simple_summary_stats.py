@@ -12,7 +12,11 @@
 
 # 3. Check calculation with numpy / scipy implementation.
 
-# 4. Repeat with simulated data following an exponential and a uniform distribution.
+# 4. Plot data as a histogram, box plot and violin.
+
+# 5. Change from 10 to 100 and 1000 observations and see what changes.
+
+# 6. Repeat with simulated data following an exponential and a uniform distribution.
 
 
 
