@@ -63,7 +63,7 @@ plt.title("Violin plot of simulated data")
 plt.ylabel("Value")
 plt.grid(True, alpha = 0.3)
 # plt.savefig("data_violin.png", dpi = 300, bbox_inches = "tight")
-# plt.show()
+plt.show()
 
 
 
