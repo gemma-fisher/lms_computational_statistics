@@ -1,18 +1,34 @@
-# Introduction to probability, statistics and hypothesis testing
+# Introduction to Computational Statistics
 # Jesús Urtasun Elizari: MRC LMS 2026
-# Chapter 2: Predictive probability
+# Chapter 1: Descriptive statistics
 
 
 
-# Exercise 1: 
+# Exercise 1:
 
-# Represent the PMF of the Bernoulli, Binomial and Poisson distribution
+# 1. Simulate 10 observations from a gaussian distribution.
 
-# Represent the PDF of the Gaussian distribution
+# 2. Implement a manual computation of mean, median, variance and std.
+
+# 3. Check calculation with numpy / scipy implementation.
+
+# 4. Plot data as a histogram, box plot and violin.
+
+# 5. Change from 10 to 100 and 1000 observations and see what changes.
+
+# 6. Repeat with simulated data following an exponential and a uniform distribution.
 
 
 
 # Import libraries ............................................................
+
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+
+
+# Simulate data ...............................................................
 
 import numpy as np
 import matplotlib.pyplot as plt

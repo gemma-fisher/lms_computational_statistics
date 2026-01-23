@@ -1,27 +1,45 @@
-# Introduction to probability, statistics and hypothesis testing
+# Introduction to Computational Statistics
 # Jesús Urtasun Elizari: MRC LMS 2026
-# Chapter 2: Predictive probability
+# Chapter 1: Descriptive statistics
 
 
 
-# Exercise 1: 
+# Exercise 1:
 
-# Implement a manual calculation of the Bernoulli, Binomial, Poisson and Gaussian probabilty
+# 1. Simulate a fair coin toss, then a biased one (P(H) = 0.7), and compute probability of getting heads in both cases.
+# Hint: Use a Bernoulli distribution
 
-# Check calculation with numpy / scipy implementation
+# 2. Simulate a fair dice roll, then a biased one (P(H) = 0.6), and compute probability of getting a 6 in both cases.
+# Hint: Use a Uniform distribution
+
+# 3. Compute the Binomial probability of:
+    # i) Getting 5 heads in 10 flips of a coin.
+    # ii) Getting 3 times a 6 in 10 rolls of dice.
+    # iii) Passing an (A, B, C) exam answering randomly.
+
+# 4. Compute the Poisson probability of:
+    # i) Observing 3 cancer patients in a hospital over a week, with observed historical average 5.
+    # ii) Observing 5 or less patients in the same hospital over same tame, with same average.
+    # iii) Observing more than 5 patients in the same hospital over same tame, with same average.
 
 
 
 # Import libraries ............................................................
 
 import numpy as np
+import seaborn as sns
 import matplotlib.pyplot as plt
-from math import comb, exp, factorial, erf, sqrt
+import matplotlib.pyplot as plt
+from math import comb, exp, factorial, sqrt
 from scipy import stats
 
+n_sim = 100
 
 
-# Bernoulli distribution ......................................................
+
+# Bernoulli events ............................................................
+
+print("\nBernoulli events: Coin toss simulation")
 
 def bernoulli_probability(x, p):
     """
@@ -34,8 +52,6 @@ def bernoulli_probability(x, p):
         return 1 - p
     else:
         raise ValueError("x must be 0 (failure) or 1 (success)")
-
-print("\nBernoulli distribution")
 
 # Probability of success (1) in a coin flip
 x = 1; p = 1/2
@@ -51,9 +67,47 @@ prob_failure_scipy = stats.bernoulli.pmf(x, p)
 print(f"\nProbability of tails (failure) (manual): {prob_failure}")
 print(f"Probability of tails (failure) (scipy): {prob_failure_scipy}")
 
+# Simulation: fair vs biased coin
+fair_coin = np.random.binomial(1, 0.5, n_sim)
+biased_coin = np.random.binomial(1, 0.7, n_sim)
+print(f"\nSimulated P(Heads), fair coin: {fair_coin.mean()}")
+print(f"Simulated P(Heads), biased coin (p=0.7): {biased_coin.mean()}")
 
 
-# Binomial distribution .......................................................
+
+# Uniform events ..............................................................
+
+print("\nUniform events: Dice roll simulation")
+
+def uniform_probability(x, low, high):
+    """
+    Calculate the probability of observing value x in a discrete
+    uniform distribution over [low, high].
+    """
+    if low <= x <= high:
+        return 1 / (high - low + 1)
+    else:
+        return 0
+
+# Fair dice (uniform)
+fair_dice = np.random.randint(1, 7, n_sim)
+simulated_prob_fair = (fair_dice == 6).mean()
+theoretical_prob_fair = uniform_probability(6, 1, 6)
+print(f"Simulated P(6), fair dice (randint): {simulated_prob_fair}")
+print(f"Theoretical P(6), fair dice (uniform): {theoretical_prob_fair}")
+
+# Biased dice: P(6) = 0.6, rest equally distributed
+probs = [0.08, 0.08, 0.08, 0.08, 0.08, 0.6]
+biased_dice = np.random.choice([1, 2, 3, 4, 5, 6], size=n_sim, p=probs)
+simulated_prob_biased = (biased_dice == 6).mean()
+print(f"Simulated P(6), biased dice (choice): {simulated_prob_biased}")
+print(f"Theoretical P(6), biased dice: 0.6")
+
+
+
+# Binomial events .............................................................
+
+print("\nBinomial events")
 
 def binomial_probability(x, n, p):
     """
@@ -61,8 +115,6 @@ def binomial_probability(x, n, p):
     with a probability of success p.
     """
     return comb(n, x) * (p ** x) * ((1 - p) ** (n - x))
-
-print("\nBinomial distribution")
 
 # Probability of 5 heads in 10 flips of a coin
 x = 5; n = 10; p = 1/2
@@ -87,7 +139,9 @@ print(f"Probability {x} 5 questions out of {n}: {probability2}")
 
 
 
-# Poisson distribution ........................................................
+# Poisson events ..............................................................
+
+print("\nPoisson events")
 
 def poisson_probability(x, lmbda):
     """
@@ -95,8 +149,6 @@ def poisson_probability(x, lmbda):
     with rate parameter lmbda.
     """
     return (lmbda ** x) * exp(-lmbda) / factorial(x)
-
-print("\nPoisson distribution")
 
 # Probability of 3 cancer patients with average 5
 x = 3; lmbda = 5
@@ -118,31 +170,3 @@ probability1 = 1 - probability1
 probability2 = 1 - probability2
 print(f"\nProbability of observing more than {x} cancer patients with average {lmbda}: {probability1}")
 print(f"Probability of observing more than {x} cancer patients with average {lmbda}: {probability2}")
-
-
-
-# Gaussian distribution .......................................................
-
-def gaussian_density(x, mu, sigma):
-    """
-    Calculate the probability of a Gaussian distribution falling between x1 and x2.
-    """
-    return erf((x - mu) / (sqrt(2) * sigma)) / 2
-
-print("\nGaussian distribution")
-
-# Calculating probability
-x1 = 1; x2 = 2; mu = 1; sigma = 2
-probability1 = gaussian_density(x2, mu, sigma) - gaussian_density(x1, mu, sigma)
-probability2 = stats.norm.cdf(x2, mu, sigma) - stats.norm.cdf(x1, mu, sigma)
-print(f"\nProbability of finding an event between {x1} and {x2}: {probability1}")
-print(f"Probability of finding an event between {x1} and {x2}: {probability2}")
-
-# Calculating probability
-x1 = -2; x2 = 2; mu = 1; sigma = 2
-probability1 = gaussian_density(x2, mu, sigma) - gaussian_density(x1, mu, sigma)
-probability2 = stats.norm.cdf(x2, mu, sigma) - stats.norm.cdf(x1, mu, sigma)
-print(f"\nProbability of finding an event between {x1} and {x2}: {probability1}")
-print(f"Probability of finding an event between {x1} and {x2}: {probability2}")
-
-
