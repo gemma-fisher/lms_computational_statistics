@@ -29,13 +29,21 @@ from scipy.stats import t, ttest_1samp
 # Load data .......................................................................................
 print("\nLoading data")
 
-# Read csv data
+# Read csv data with pandas
 df_control = pd.read_csv("data/exp_control.csv")
-df_mutant1 = pd.read_csv("data/exp_mutant1.csv")
+df_mutant = pd.read_csv("data/exp_mutant1.csv")
+print("\nControl format:\n", type(df_control))
+print("Control expression:\n", df_control.head())
+print("\nMutant format:\n", type(df_mutant))
+print("Mutant expression:\n", df_mutant.head())
 
 # Extract values as numpy ndarray
 control_expr = df_control["avg_expression"].values
-mutant1_expr = df_mutant1["avg_expression"].values
+mutant_expr = df_mutant["avg_expression"].values
+print("\nControl format:\n", type(control_expr))
+print("Control expression:\n", control_expr[:5])
+print("\nMutant format:\n", type(mutant_expr))
+print("Mutant expression:\n", mutant_expr[:5])
 
 
 
@@ -44,9 +52,9 @@ mutant1_expr = df_mutant1["avg_expression"].values
 # Plot histogram
 plt.figure(figsize = (8, 5))
 plt.hist(control_expr, bins = 30, alpha = 0.5, label = "Control", edgecolor = "black", linewidth = 0.8)
-plt.hist(mutant1_expr, bins = 30, alpha = 0.5, label = "Mutant", edgecolor = "black", linewidth = 0.8)
+plt.hist(mutant_expr, bins = 30, alpha = 0.5, label = "Mutant", edgecolor = "black", linewidth = 0.8)
 plt.axvline(np.mean(control_expr), linestyle = "--", linewidth = 2, label = "Control mean")
-plt.axvline(np.mean(mutant1_expr), linestyle = "--", linewidth = 2, label = "Mutant mean")
+plt.axvline(np.mean(mutant_expr), linestyle = "--", linewidth = 2, label = "Mutant mean")
 plt.xlabel("Average expression")
 plt.ylabel("Frequency")
 plt.legend()
@@ -61,9 +69,9 @@ plt.show()
 # H0: mean(control) = mean(mutant)
 # H1: mean(control) > mean(mutant)
 mu = np.mean(control_expr)
-xbar = np.mean(mutant1_expr)
-s = np.std(mutant1_expr, ddof = 1)
-n = len(mutant1_expr)
+xbar = np.mean(mutant_expr)
+s = np.std(mutant_expr, ddof = 1)
+n = len(mutant_expr)
 se = s / np.sqrt(n)
 print(f"\nExpected value (mu control) = {mu:.3f}")
 print(f"Sample mean (xbar mutant) = {xbar:.3f}")
@@ -83,7 +91,7 @@ print(f"p-value = {p_value_manual:.4e}")
 
 # Hypothesis testing (Scipy implementation) .................................................
 
-t_stat_scipy, p_value_two_sided = ttest_1samp(mutant1_expr, popmean = mu)
+t_stat_scipy, p_value_two_sided = ttest_1samp(mutant_expr, popmean = mu)
 
 # Convert to one-sided p-value
 p_value_one_sided = p_value_two_sided / 2 if t_stat_scipy > 0 else 1

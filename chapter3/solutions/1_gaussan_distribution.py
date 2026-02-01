@@ -64,7 +64,8 @@ x1 = 1; x2 = 2; mu = 1; sigma = 2
 x1 = 1; x2 = 2
 x_interval = np.linspace(x1, x2, 1000)
 y_interval = gaussian_density(x_interval, mu, sigma)
-p_manual = np.trapz(y_interval, x_interval)
+p_manual = np.trapz(y_interval, x_interval) # numpy 1.19 an earlier
+# p_manual = np.trapezoid(y_interval, x_interval) # numpy 2.0 and after
 p_scipy = stats.norm.cdf(x2, mu, sigma) - stats.norm.cdf(x1, mu, sigma)
 print(f"\nProbability of finding x between {x1} and {x2}: {p_manual}")
 print(f"Probability of finding x between {x1} and {x2}: {p_scipy}")
@@ -73,7 +74,8 @@ print(f"Probability of finding x between {x1} and {x2}: {p_scipy}")
 x1 = -2; x2 = 2; mu = 1; sigma = 2
 x_interval = np.linspace(x1, x2, 1000)
 y_interval = gaussian_density(x_interval, mu, sigma)
-p_manual = np.trapz(y_interval, x_interval)
+p_manual = np.trapz(y_interval, x_interval) # numpy 1.19 an earlier
+# p_manual = np.trapezoid(y_interval, x_interval) # numpy 2.0 and after
 p_scipy = stats.norm.cdf(x2, mu, sigma) - stats.norm.cdf(x1, mu, sigma)
 print(f"\nProbability of finding x between {x1} and {x2}: {p_manual}")
 print(f"Probability of finding x between {x1} and {x2}: {p_scipy}")
@@ -82,7 +84,8 @@ print(f"Probability of finding x between {x1} and {x2}: {p_scipy}")
 x1 = -5; x2 = 5; mu = 1; sigma = 2
 x_interval = np.linspace(x1, x2, 1000)
 y_interval = gaussian_density(x_interval, mu, sigma)
-p_manual = np.trapz(y_interval, x_interval)
+p_manual = np.trapz(y_interval, x_interval) # numpy 1.19 an earlier
+# p_manual = np.trapezoid(y_interval, x_interval) # numpy 2.0 and after
 p_scipy = stats.norm.cdf(x2, mu, sigma) - stats.norm.cdf(x1, mu, sigma)
 print(f"\nProbability of finding x between {x1} and {x2}: {p_manual}")
 print(f"Probability of finding x between {x1} and {x2}: {p_scipy}")
