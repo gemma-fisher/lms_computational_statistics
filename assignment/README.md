@@ -28,11 +28,9 @@ For each replicate, two values are provided:
 - Number of **C bases** (`nC`), representing methylated cytosines
 - Number of **T bases** (`nT`), representing unmethylated cytosines converted during the EM-seq protocol
 
-From these counts, we compute a **methylation score** for each genomic region:
+From these counts, we compute a **methylation score** `s` for each genomic region:
 
-\[
-\text{methylation score} \; s = \frac{nC}{nC + nT}
-\]
+`s = nC / (nC + nT)`
 
 This score:
 - ranges between **0 and 1**,
@@ -68,12 +66,10 @@ Because raw RNA-seq counts are:
 
 we apply a **log transformation** to improve visualization:
 
-\[
-x_{\text{log}} = \log(x + 1)
-\]
+`x_log = log(x + 1)`
 
 where:
-- \(x\) is the raw read count,
+- `x` is the raw read count,
 - adding **1** avoids taking the logarithm of zero.
 
 The log transformation:
