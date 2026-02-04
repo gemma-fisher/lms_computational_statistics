@@ -10,108 +10,151 @@
 
 # 2. Plot both distributions as a histogram
 
-# 3. Compute manually a one-sample t-statistic, and a P-value by computing the cumulative probabiltiy of the t distribution
+# 3. Compute manually a Fisher test and compare with scipy implementation: Use the stats.bartlett() and stats.levene() libraries
 
-# 4. Compare with scipy implementation: Use the stats.ttest_1samp library
+# 4. Plot the F distribution with the observed f statistic, and a shaded area representing the one-sided p-value
+
+# 5. Plot the F distribution with the observed f statistic, and a shaded area representing the two-sided p-value
 
 
 
-# Import libraries ................................................................................
+# Import libraries ....................................................................................................
 
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from scipy.stats import f, levene, bartlett
-
-print("\nFisher test for equal variance:\nCompare sample variance of two independent groups")
+from scipy.stats import f, bartlett, levene
 
 
 
-# Load data .......................................................................................
+# Load data ...........................................................................................................
 print("\nLoading data")
 
+# Read csv data with pandas
+df_control = pd.read_csv("data/exp_control.csv")
+df_mutant = pd.read_csv("data/exp_mutant1.csv")
+# print("\nControl format:\n", type(df_control))
+# print("Control expression:\n", df_control.head())
+# print("\nMutant format:\n", type(df_mutant))
+# print("Mutant expression:\n", df_mutant.head())
 
-# Formulate hypothesis ............................................................................
+# Extract values as numpy ndarray
+control_expr = df_control["avg_expression"].values
+mutant_expr = df_mutant["avg_expression"].values
+# print("\nControl format:\n", type(control_expr))
+# print("Control expression:\n", control_expr[:5])
+# print("\nMutant format:\n", type(mutant_expr))
+# print("Mutant expression:\n", mutant_expr[:5])
 
-# H0: Samples come from same distribution
-# H1: Samples come from different distribution
 
 
+# Visual inspection: histogram ........................................................................................
 
-# Simulate data ...................................................................................
-
-# Simulate two sets of gaussian observations
-sample1 = np.random.normal(loc = 50, scale = 5, size = 100)
-sample2 = np.random.normal(loc = 50, scale = 5, size = 100)
-
-# Plot observations as histograms
-plt.figure()
-plt.hist(sample1, bins = 15, alpha = 0.5, color = "blue", edgecolor = "black", label = "Sample 1")
-plt.hist(sample2, bins = 15, alpha = 0.5, color = "red", edgecolor = "black", label = "Sample 2")
-plt.title("Histogram of gaussian observations")
-plt.xlabel("Value")
+# Plot histogram
+plt.figure(figsize = (8, 5))
+plt.hist(control_expr, bins = 30, alpha = 0.5, label = "Control", edgecolor = "black", linewidth = 0.8)
+plt.hist(mutant_expr, bins = 30, alpha = 0.5, label = "Mutant", edgecolor = "black", linewidth = 0.8)
+plt.axvline(np.mean(control_expr), linestyle = "--", linewidth = 2, label = "Control mean")
+plt.axvline(np.mean(mutant_expr), linestyle = "--", linewidth = 2, label = "Mutant mean")
+plt.xlabel("Average expression")
 plt.ylabel("Frequency")
 plt.legend()
-# plt.savefig("observations_histogram.png", dpi = 300, bbox_inches = "tight")
+plt.grid(True, alpha = 0.3)
+# plt.savefig("control_vs_mutant_hist.png", dpi=300, bbox_inches="tight")
 plt.show()
 
 
 
-# F test for equal variances ......................................................................
+# Hypothesis testing (manual implementation) ..........................................................................
 
-# Calculate variances of the two samples
-var1, var2 = np.var(sample1, ddof = 1), np.var(sample2, ddof = 1)
-# Degrees of freedom for each sample
-df1 = len(sample1) - 1
-df2 = len(sample2) - 1
+print("\nF-test:\nCompare variances of two independent groups")
 
-# Calculate F-statistic and p-value manually
-F_stat_manual = var1 / var2 if var1 > var2 else var2 / var1
-p_value_manual = 2 * (1 - f.cdf(F_stat_manual, df1, df2))
-print(f"\nManual calculation:")
-print(f"F-statistic = {F_stat_manual:.4f}")
-print(f"p-value = {p_value_manual:.4f}")
+# H0: var(control) = var(mutant)
+# H1 one-sided: var(mutant) > var(control)
+# H1 two-sided: var(mutant) != var(control)
 
+# Sample variances
+var_control = np.var(control_expr, ddof=1)
+var_mutant  = np.var(mutant_expr, ddof=1)
+n1, n2 = len(control_expr), len(mutant_expr)
+print(f"\nVariance control = {var_control:.5f}")
+print(f"Variance mutant = {var_mutant:.5f}")
 
+# F-statistic (directional: mutant / control)
+F_stat = var_mutant / var_control
+df1, df2 = n2 - 1, n1 - 1
 
-# Compare with precompiled libraries ..............................................................
+# One-sided p-value
+p_one_sided_manual = 1 - f.cdf(F_stat, df1, df2)
+
+# Two-sided: symmetric tail probability
+p_two_sided_manual = 2 * min(f.cdf(F_stat, df1, df2), 1 - f.cdf(F_stat, df1, df2))
+
+print("\nF-test (manual)")
+print(f"one-sided p-value = {p_one_sided_manual:.5f}")
+print(f"two-sided p-value = {p_two_sided_manual:.5f}")
+
+# Scipy implementation
 
 # Bartlett's test (likelihood-ratio test)
-bart_stat, p_bart = bartlett(sample1, sample2)
-print("\nBartlett test:")
-print(f"B-statistic = {bart_stat:.4f}")
-print(f"p-value = {p_bart:.4f}")
+bart_stat, p_bart = bartlett(control_expr, mutant_expr)
+print("\nBartlett test (scipy):")
+print(f"B-statistic = {bart_stat:.5f}")
+print(f"p-value = {p_bart:.5f}")
 
-# 3. Levene's test (robust, ANOVA-based)
-lev_stat, p_lev = levene(sample1, sample2, center = "mean")
-print("\nLevene test:")
-print(f"L-statistic = {lev_stat:.4f}")
-print(f"p-value = {p_lev:.4f}")
+# Levene's test (robust, ANOVA-based)
+lev_stat, p_lev = levene(control_expr, mutant_expr, center = "mean")
+print("\nLevene test (scipy):")
+print(f"L-statistic = {lev_stat:.5f}")
+print(f"p-value = {p_lev:.5f}")
 
 
 
-# Plot the F-distribution .........................................................................
+# Interpret result (significance level 0.05) ..........................................................................
+alpha = 0.05
+if p_one_sided_manual < alpha:
+    print("\np-value < significance threshold: Reject H0:\nExpression in mutant significantly different from expression in control.")
+else:
+    print("\np-value > significance threshold: Accept H0:\nNo evidence of expression in mutant significantly different than in control.")
 
-# Prepare for plot
-x = np.linspace(0, 5, 1000) # Even spaced range of F-values
-f_dist = f.pdf(x, df1, df2)  # F density function
 
-# Plot F-distribution
-plt.figure()
-plt.plot(x, f_dist, label = f"F-distribution (df1 = {df1}, df2 = {df2})")
-plt.axvline(F_stat_manual, color = "red", linestyle = "--", label = f"Observed F = {F_stat_manual:.2f}")
-plt.fill_between(x, f_dist, where = (x >= F_stat_manual), color = "red", alpha = 0.3, label = "Rejection region")
-plt.title("F-distribution and observed F-statistic")
+
+# Plot one-sided p-value ............................................................................
+
+# Prepare F distribution
+x = np.linspace(0.01, F_stat + 2, 1000)
+f_dist = f.pdf(x, df1, df2)
+
+plt.figure(figsize=(8, 5))
+plt.plot(x, f_dist, label=f"F-distribution (df1={df1}, df2={df2})")
+plt.axvline(F_stat, color="red", linestyle="--", label=f"Observed F = {F_stat:.2f}")
+
+# One-tailed rejection region
+plt.fill_between( x, f_dist, where=(x >= F_stat), color="red", alpha=0.3, label="One-sided p-value")
+
 plt.xlabel("F value")
 plt.ylabel("Density")
+plt.title("One-sided F-test")
 plt.legend()
-# plt.savefig("f_test.png", dpi = 300, bbox_inches = "tight")
+plt.grid(alpha=0.3)
 plt.show()
 
-# Interpret result (significance level 0.05)
-alpha = 0.05
-if p_value_manual < alpha:
-    print("Reject H0: Samples come from different distribution.")
-else:
-    print("Accept H0: Samples come from same distribution.")
+
+
+# Plot two-sided p-value ............................................................................
+
+plt.figure(figsize=(8, 5))
+plt.plot(x, f_dist, label=f"F-distribution (df1={df1}, df2={df2})")
+plt.axvline(F_stat, color="red", linestyle="--", label=f"Observed F = {F_stat:.2f}")
+
+# Lower and upper critical regions
+plt.fill_between(x, f_dist, where=(x <= f.ppf(p_two_sided_manual / 2, df1, df2)), color="red", alpha=0.3)
+plt.fill_between(x, f_dist, where=(x >= f.ppf(1 - p_two_sided_manual / 2, df1, df2)), color="red", alpha=0.3, label="Two-sided p-value")
+
+plt.xlabel("F value")
+plt.ylabel("Density")
+plt.title("Two-sided F-test")
+plt.legend()
+plt.grid(alpha=0.3)
+plt.show()

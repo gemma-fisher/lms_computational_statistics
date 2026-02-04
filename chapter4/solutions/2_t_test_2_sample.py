@@ -10,7 +10,7 @@
 
 # 2. Plot both distributions as a histogram
 
-# 3. Compute manually a two-sample t-statistic and compare with scipy implementation: Use the stats.ttest_1samp() library
+# 3. Compute manually a two-sample t-statistic and compare with scipy implementation: Use the stats.ttest_ind() library
 
 # 4. Plot the t distribution with the observed t statistic, and a shaded area representing the one-sided p-value
 
@@ -71,47 +71,47 @@ plt.show()
 print("\nTwo-sample t-test:\nCompare means of two independent groups")
 
 # H0: mean(control) = mean(mutant)
-# H1 one-sided: mean(mutant) > mean(control)
+# H1 one-sided: mean(mutant) >/< mean(control)
 # H1 two-sided: mean(mutant) != mean(control)
 
 # Sample statistics
 mean1, mean2 = np.mean(control_expr), np.mean(mutant_expr)
 s1, s2 = np.std(control_expr, ddof = 1), np.std(mutant_expr, ddof = 1)
 n1, n2 = len(control_expr), len(mutant_expr)
-print(f"\nMean control = {mean1:.3f}")
-print(f"Mean mutant  = {mean2:.3f}")
+print(f"\nMean control = {mean1:.5f}")
+print(f"Mean mutant  = {mean2:.5f}")
 
 # Pooled standard deviation (equal-variance assumption)
-sp2 = ((n1 - 1)*s1**2 + (n2 - 1)*s2**2) / (n1 + n2 - 2)
-se  = np.sqrt(sp2 * (1/n1 + 1/n2))
-print(f"Pooled standard error = {se:.3f}")
+sp = ((n1 - 1)*s1**2 + (n2 - 1)*s2**2) / (n1 + n2 - 2)
+se  = np.sqrt(sp * (1/n1 + 1/n2))
+print(f"Pooled standard error = {se:.5f}")
 
 # Manual t-statistic
 t_stat = (mean2 - mean1) / se
 df = n1 + n2 - 2
 
 # One-sided p-value
-p_one_sided_scipy_manual = 1 - t.cdf(t_stat, df)
-p_two_sided_scipy_manual = 2 * (1 - t.cdf(abs(t_stat), df))
-print("\nOne-sample t-test (manual)")
-print(f"t statistic = {t_stat:.3f}")
-print(f"one-sided p-value = {p_one_sided_scipy_manual:.4e}")
-print(f"two-sided p-value (manual) = {p_two_sided_scipy_manual:.4e}")
+p_one_sided_manual = 1 - t.cdf(t_stat, df)
+p_two_sided_manual = 2 * (1 - t.cdf(abs(t_stat), df))
+print("\nTwo-sample t-test (manual)")
+print(f"t statistic = {t_stat:.5f}")
+print(f"one-sided p-value = {p_one_sided_manual:.5f}")
+print(f"two-sided p-value (manual) = {p_two_sided_manual:.5f}")
 
 # Scipy implementation
-t_stat_scipy, p_two_sided_scipy = ttest_ind(control_expr, mutant_expr, equal_var = True) # Student
-# t_stat_scipy, p_two_sided_scipy = ttest_ind(control_expr, mutant_expr, equal_var = False) # Welch (recommended)
+t_stat_scipy, p_two_sided_scipy = ttest_ind(mutant_expr, control_expr, equal_var = True) # Student
+# t_stat_scipy, p_two_sided_scipy = ttest_ind(mutant_expr, control_expr, equal_var = False) # Welch (recommended)
 p_one_sided_scipy = p_two_sided_scipy / 2 if t_stat_scipy > 0 else 1
-print("\nOne-sample t-test (scipy)")
-print(f"t statistic = {t_stat_scipy:.3f}")
-print(f"one-sided p-value = {p_one_sided_scipy:.4e}")
-print(f"two-sided p-value (scipy)= {p_two_sided_scipy:.4e}")
+print("\nTwo-sample t-test (scipy)")
+print(f"t statistic = {t_stat_scipy:.5f}")
+print(f"one-sided p-value = {p_one_sided_scipy:.5f}")
+print(f"two-sided p-value (scipy)= {p_two_sided_scipy:.5f}")
 
 
 
 # Interpret result (significance level 0.05) ..........................................................................
 alpha = 0.05
-if p_one_sided_scipy_manual < alpha:
+if p_one_sided_manual < alpha:
     print("\np-value < significance threshold: Reject H0:\nExpression in mutant significantly different from expression in control.")
 else:
     print("\np-value > significance threshold: Accept H0:\nNo evidence of expression in mutant significantly different than in control.")

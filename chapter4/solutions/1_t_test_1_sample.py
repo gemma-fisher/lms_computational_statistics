@@ -79,9 +79,9 @@ xbar = np.mean(mutant_expr)
 s = np.std(mutant_expr, ddof = 1)
 n = len(mutant_expr)
 se = s / np.sqrt(n)
-print(f"\nExpected value (mu control) = {mu:.3f}")
-print(f"Sample mean (xbar mutant) = {xbar:.3f}")
-print(f"Standard error = {se:.3f}")
+print(f"\nExpected value (mu control) = {mu:.5f}")
+print(f"Sample mean (xbar mutant) = {xbar:.5f}")
+print(f"Standard error = {se:.5f}")
 
 # Manual t-statistic
 t_stat = (xbar - mu) / (s / np.sqrt(n))
@@ -91,17 +91,17 @@ df = n - 1
 p_one_sided_scipy_manual = 1 - t.cdf(t_stat, df)
 p_two_sided_scipy_manual = 2 * (1 - t.cdf(abs(t_stat), df))
 print("\nOne-sample t-test (manual)")
-print(f"t statistic = {t_stat:.3f}")
-print(f"one-sided p-value = {p_one_sided_scipy_manual:.4e}")
-print(f"two-sided p-value (manual) = {p_two_sided_scipy_manual:.4e}")
+print(f"t statistic = {t_stat:.5f}")
+print(f"one-sided p-value = {p_one_sided_scipy_manual:.5f}")
+print(f"two-sided p-value (manual) = {p_two_sided_scipy_manual:.5f}")
 
 # Scipy implementation
 t_stat_scipy, p_two_sided_scipy = ttest_1samp(mutant_expr, popmean = mu)
 p_one_sided_scipy = p_two_sided_scipy / 2 if t_stat_scipy > 0 else 1
 print("\nOne-sample t-test (scipy)")
-print(f"t statistic = {t_stat_scipy:.3f}")
-print(f"one-sided p-value = {p_one_sided_scipy:.4e}")
-print(f"two-sided p-value (scipy)= {p_two_sided_scipy:.4e}")
+print(f"t statistic = {t_stat_scipy:.5f}")
+print(f"one-sided p-value = {p_one_sided_scipy:.5f}")
+print(f"two-sided p-value (scipy)= {p_two_sided_scipy:.5f}")
 
 
 
