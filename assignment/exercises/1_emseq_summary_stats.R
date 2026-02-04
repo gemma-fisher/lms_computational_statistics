@@ -33,58 +33,22 @@
 
 # Load RNA-seq ................................................................
 
-# Read RNA-seq data
-
-# Extract deprived vs control
-
-# Remove genes with zero total counts
-
-# Concatenate replicates, convert 2D matrix to 1D vector
-
 
 
 # Compute mean value ..........................................................
-
-# Manual calculation
-
-# Check implementation
 
 
 
 # Compute variance ............................................................
 
-# Manual calculation
-
-# Check implementation
-
 
 
 # Compute median ..............................................................
-
-# Manual calculation
-
-# Check implementation
 
 
 
 # Compute std .................................................................
 
-# Manual calculation
-
-# Check implementation
 
 
-
-# Plot data and summary statistics ............................................
-
-# Prepare for plot
-
-# Log transform for proper visualization
-
-# Box plot
-
-# Violin plot
-
-# Prepare histogram
-
-# Plot histogram
+# Plot RNA-seq data ...........................................................

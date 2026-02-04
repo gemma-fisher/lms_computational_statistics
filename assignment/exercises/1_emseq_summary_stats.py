@@ -33,56 +33,22 @@
 
 # Load EM-seq .................................................................
 
-# Read EM-seq data
-
-# Compute methylation score
-
-# Average scores for 3uM deprived
-
-# Average scores for 200uM control
-
 
 
 # Compute mean value ..........................................................
-
-# Manual calculation
-
-# Check implementation
 
 
 
 # Compute variance ............................................................
 
-# Manual calculation
-
-# Check implementation
-
 
 
 # Compute median ..............................................................
-
-# Manual calculation
-
-# Check implementation
 
 
 
 # Compute std .................................................................
 
-# Manual calculation
-
-# Check implementation
-
 
 
 # Plot data and summary statistics ............................................
-
-# Prepare for plot
-
-# Box plot
-
-# Violin plot
-
-# Prepare histogram
-
-# Plot histogram
